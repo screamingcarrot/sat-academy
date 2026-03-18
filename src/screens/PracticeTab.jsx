@@ -236,14 +236,16 @@ export default function PracticeTab({ item, subunit, onBack }) {
     ? selected?.trim() === String(q.answer).trim()
     : selected === answerKey
   )
-  const hasGraph = Boolean(q.desmosExpression)
   const confirmMode = !useFree && Boolean(settings.confirmAnswer)
+  const desmosExprs = q.desmosExpression
+    ? [{ id: 'q', latex: q.desmosExpression, color: '#6366f1' }]
+    : []
 
   return (
     <>
       {showFormulas && <FormulaSheet onClose={() => setShowFormulas(false)} />}
 
-      <div className="max-w-5xl mx-auto w-full flex flex-col gap-4">
+      <div className="w-full flex flex-col gap-3">
         {/* ── Top bar ── */}
         <div className="flex items-center gap-3 px-1">
           <span className="text-sm font-semibold text-gray-700 dark:text-gray-200 tabular-nums flex-shrink-0">
@@ -282,56 +284,33 @@ export default function PracticeTab({ item, subunit, onBack }) {
           </button>
         </div>
 
-        {/* ── Question card ── */}
+        {/* ── Question card — always split with Desmos ── */}
         <div className="card rounded-2xl shadow-card overflow-hidden">
-          {hasGraph ? (
-            /* Split layout when there's a Desmos graph */
-            <div
-              ref={containerRef}
-              className="flex"
-              style={{ height: 440, minHeight: 380 }}
-            >
-              {/* Left: Desmos */}
-              <div className="flex-shrink-0 flex flex-col border-r border-gray-100 dark:border-gray-800" style={{ width: `${splitPct}%`, minWidth: 220 }}>
-                <DesmosEmbed
-                  expressions={[{ id: 'q', latex: q.desmosExpression, color: '#6366f1' }]}
-                  className="w-full flex-1"
-                  style={{ height: '100%' }}
-                />
-              </div>
-
-              {/* Drag handle */}
-              <div
-                className="divider-handle flex items-center justify-center select-none w-3 bg-gray-50 dark:bg-gray-800/50"
-                onMouseDown={handleMouseDown}
-                style={{ cursor: 'col-resize' }}
-              >
-                <GripVertical size={14} className="text-gray-400" />
-              </div>
-
-              {/* Right: Question */}
-              <div className="flex-1 overflow-y-auto p-6 min-w-0 flex flex-col">
-                <QuestionContent
-                  q={q}
-                  useFree={useFree}
-                  submitted={submitted}
-                  selected={selected}
-                  pendingChoice={pendingChoice}
-                  setPendingChoice={setPendingChoice}
-                  answerKey={answerKey}
-                  wasCorrect={wasCorrect}
-                  confirmMode={confirmMode}
-                  onSubmitMCQ={handleSubmitMCQ}
-                  onSubmitFree={handleSubmitFree}
-                  onNext={handleNext}
-                  qIndex={qIndex}
-                  totalQ={totalQ}
-                />
-              </div>
+          <div
+            ref={containerRef}
+            className="flex"
+            style={{ height: 480, minHeight: 400 }}
+          >
+            {/* Left: Desmos calculator (always shown, like real Digital SAT) */}
+            <div className="flex-shrink-0 flex flex-col border-r border-gray-100 dark:border-gray-800" style={{ width: `${splitPct}%`, minWidth: 240 }}>
+              <DesmosEmbed
+                expressions={desmosExprs}
+                className="w-full flex-1"
+                style={{ height: '100%' }}
+              />
             </div>
-          ) : (
-            /* Full-width layout when no graph */
-            <div className="p-6 sm:p-8 flex flex-col">
+
+            {/* Drag handle */}
+            <div
+              className="divider-handle flex items-center justify-center select-none w-3 bg-gray-50 dark:bg-gray-800/50"
+              onMouseDown={handleMouseDown}
+              style={{ cursor: 'col-resize' }}
+            >
+              <GripVertical size={14} className="text-gray-400" />
+            </div>
+
+            {/* Right: Question */}
+            <div className="flex-1 overflow-y-auto p-5 min-w-0 flex flex-col">
               <QuestionContent
                 q={q}
                 useFree={useFree}
@@ -349,7 +328,7 @@ export default function PracticeTab({ item, subunit, onBack }) {
                 totalQ={totalQ}
               />
             </div>
-          )}
+          </div>
         </div>
       </div>
     </>
