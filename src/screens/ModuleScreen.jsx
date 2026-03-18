@@ -130,7 +130,7 @@ export default function ModuleScreen({ module }) {
     <div className="min-h-screen bg-gray-50 dark:bg-gray-950 page-enter">
       {/* Header */}
       <header className="sticky top-0 z-40 bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800">
-        <div className="px-[225px] h-14 flex items-center gap-3">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 h-14 flex items-center gap-3">
           <button onClick={() => navigate('/')} className="btn-ghost p-2 -ml-2">
             <ArrowLeft size={18} />
           </button>
@@ -146,7 +146,7 @@ export default function ModuleScreen({ module }) {
         </div>
       </header>
 
-      <main className="px-[225px] py-6 space-y-4">
+      <main className="max-w-5xl mx-auto px-4 sm:px-6 py-6 space-y-4">
         {units.map(unit => (
           <UnitSection
             key={unit.id}

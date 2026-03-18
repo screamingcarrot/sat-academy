@@ -215,7 +215,7 @@ export default function LearnScreen() {
     <div className="min-h-screen bg-gray-50 dark:bg-gray-950 page-enter flex flex-col">
       {/* Top bar */}
       <header className="sticky top-0 z-40 bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800">
-        <div className="max-w-full mx-auto px-[225px]">
+        <div className="max-w-5xl mx-auto px-4 sm:px-8">
           <div className="h-14 flex items-center gap-3">
             <button onClick={() => navigate(-1)} className="btn-ghost p-2 -ml-2">
               <ArrowLeft size={18} />
@@ -253,7 +253,7 @@ export default function LearnScreen() {
 
       {/* Tab bar */}
       <div className="bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800 sticky top-[89px] z-30">
-        <div className="max-w-full mx-auto px-[225px] flex">
+        <div className="max-w-5xl mx-auto px-4 sm:px-8 flex">
           {[
             { key: 'learn',    label: 'Learn',    icon: <BookOpen size={15} /> },
             { key: 'practice', label: 'Practice', icon: <Zap size={15} /> },
@@ -275,7 +275,7 @@ export default function LearnScreen() {
 
       {/* Content */}
       {tab === 'learn' ? (
-        <main className="flex-1 max-w-2xl mx-auto w-full px-[225px] py-6">
+        <main className="flex-1 max-w-2xl mx-auto w-full px-4 sm:px-8 py-6">
           {/* Title + description side by side (#6a) */}
           <div className="flex items-start gap-4 mb-5">
             <div className="flex-shrink-0">

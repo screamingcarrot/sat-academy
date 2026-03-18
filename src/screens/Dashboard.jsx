@@ -105,7 +105,7 @@ export default function Dashboard() {
     <div className="min-h-screen bg-gray-50 dark:bg-gray-950 page-enter">
       {/* ── Header ── */}
       <header className="sticky top-0 z-40 bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800">
-        <div className="px-[225px] h-14 flex items-center justify-between">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between">
           {/* Logo */}
           <div className="flex items-center gap-2.5">
             <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-brand-500 to-brand-700 flex items-center justify-center">
@@ -124,7 +124,7 @@ export default function Dashboard() {
         </div>
       </header>
 
-      <main className="px-[225px] py-6 space-y-6">
+      <main className="max-w-5xl mx-auto px-4 sm:px-6 py-6 space-y-6">
         {/* ── Hero stats row ── */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
           {/* Streak */}

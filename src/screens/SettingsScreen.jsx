@@ -34,7 +34,7 @@ export default function SettingsScreen() {
     <div className="min-h-screen bg-gray-50 dark:bg-gray-950 page-enter">
       {/* Header */}
       <header className="sticky top-0 z-40 bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800">
-        <div className="px-[225px] h-14 flex items-center gap-3">
+        <div className="max-w-2xl mx-auto px-4 sm:px-6 h-14 flex items-center gap-3">
           <button onClick={() => navigate('/')} className="btn-ghost p-2 -ml-2">
             <ArrowLeft size={18} />
           </button>
@@ -45,7 +45,7 @@ export default function SettingsScreen() {
         </div>
       </header>
 
-      <main className="px-[225px] py-6 space-y-5">
+      <main className="max-w-2xl mx-auto px-4 sm:px-6 py-6 space-y-5">
         {/* SAT Test Date */}
         <div className="card p-5 rounded-2xl shadow-card">
           <div className="flex items-center gap-2 mb-4">
