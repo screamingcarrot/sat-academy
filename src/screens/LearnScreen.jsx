@@ -276,23 +276,15 @@ export default function LearnScreen() {
       {/* Content */}
       {tab === 'learn' ? (
         <main className="flex-1 max-w-2xl mx-auto w-full px-4 sm:px-8 py-6">
-          {/* Title + description side by side (#6a) */}
-          <div className="flex items-start gap-4 mb-5">
-            <div className="flex-shrink-0">
-              <p className="text-xs font-mono text-gray-400 dark:text-gray-500 mb-0.5">{item.id}</p>
-              <h1 className="text-xl font-bold text-gray-900 dark:text-white leading-snug">{item.title}</h1>
-            </div>
+          <div className="mb-5">
+            <p className="text-xs font-mono text-gray-400 dark:text-gray-500 mb-0.5">{item.id}</p>
+            <h1 className="text-xl font-bold text-gray-900 dark:text-white leading-snug mb-2">{item.title}</h1>
             {item.learn?.description && (
-              <p className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed pt-5 border-l border-gray-200 dark:border-gray-700 pl-4 hidden sm:block">
+              <p className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed">
                 {item.learn.description}
               </p>
             )}
           </div>
-          {item.learn?.description && (
-            <p className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed mb-5 sm:hidden">
-              {item.learn.description}
-            </p>
-          )}
           <LearnTab item={item} subunit={subunit} onGoToPractice={() => setTab('practice')} />
         </main>
       ) : (
