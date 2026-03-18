@@ -296,7 +296,7 @@ export default function LearnScreen() {
           <LearnTab item={item} subunit={subunit} onGoToPractice={() => setTab('practice')} />
         </main>
       ) : (
-        <main className="flex-1 w-full px-[225px] py-5">
+        <main className="flex-1 w-full px-4 sm:px-8 py-6">
           <PracticeTab item={item} subunit={subunit} onBack={() => setTab('learn')} />
         </main>
       )}
